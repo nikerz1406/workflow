@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-3.6.0.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap-datepicker.min.js"></script>
+    <link rel="stylesheet" href="css/jquery-confirm.min.css">
+    <script src="js/jquery-confirm.min.js"></script>
+    <script src="js/all.min.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css"/>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="sortable.min.js"></script>
+
+    <style>
+        .col-sm-4 p{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 100%;
+        }
+        .add-new{
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+        .remove-task{
+            cursor: pointer;
+        }
+        .task-component{
+            height:80vh;
+            float: left;
+            overflow-y: auto;
+        }
+        .header-line{
+            width: 100%;
+            height: 1rem;
+            background: rgb(0,255,214);
+            background: linear-gradient(90deg, rgba(0,255,214,1) 0%, rgba(0,123,255,1) 72%, rgba(255,255,255,1) 100%);
+        }
+        .footer{
+            background: rgb(0,255,214);
+            background: linear-gradient(90deg, rgba(0,255,214,1) 0%, rgba(0,123,255,1) 72%, rgba(255,255,255,1) 100%);
+            position: absolute;
+            bottom: 0;
+        }
+        .footer b{
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        .datepicker.datepicker-dropdown.dropdown-menu.datepicker-orient-left{
+            padding:1rem;
+            margin:1rem;
+        }
+        .datepicker.datepicker-dropdown.dropdown-menu.datepicker-orient-left td{
+            margin-right: 0.5rem;
+            padding-right: 0.5rem;
+            cursor: pointer;
+        }
+        .hidden{
+            visibility:hidden;
+        }
+        
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container-fluid m-0 p-0">
+        <div class="header-line m-0 p-0">
+
+        </div>
+    </div>
+    <div class="todo-wapper container mt-3">
+        <div class="row border-bottom">
+            <div class="state-task col-sm-4" data-id="left"><h1>To Do <i class="fa fa-plus-circle add-new" aria-hidden="true"></i></h1></div>
+            <div class="state-task col-sm-4" data-id="middle"><h1>Doing </h1></div>
+            <div class="state-task col-sm-4" data-id="right"><h1>Done </h1></div>
+        </div>
+        <div class="row" id="container-tasks">
+            <div class="col-sm-4 task-component border-right border-left p-4" id="left">
+                
+            </div>
+            <div class="col-sm-4 task-component border-right p-4" id="middle">
+                
+            </div>
+            <div class="col-sm-4 task-component border-right p-4" id="right" >
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid footer">
+        <div class="row">
+            <div class="col-md-12">
+                <b class="m-5">WORK FLOW</b>
+            </div>
+        </div>
+    </div>
+    
+      
+</body>
+</html>
+<script src="main.js"></script>
