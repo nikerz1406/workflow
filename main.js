@@ -14,6 +14,12 @@ ToDo.prototype.addEventListenner = function(){
     })
     .on("click",".remove-task",function(){
         _this.removeTask(this)
+    }).on("dblclick","#left",function(){
+        alert("left")
+    }).on("dblclick","#middle",function(){
+        alert("middle")
+    }).on("dblclick","#right",function(){
+        alert("right")
     })
 }
 ToDo.prototype.removeTask = function(el){
@@ -229,7 +235,7 @@ ToDo.prototype.removeBorderDragable = function(){
     })
 }
 ToDo.prototype.getStateID = function(el){
-    return $(el).closest(".col-sm-4.border-right").attr("id")
+    return $(el).closest(".task-component").attr("id")
 }
 ToDo.prototype.setPercent = function(el,per=0){
     per = per > 100 ? 100 : per;
