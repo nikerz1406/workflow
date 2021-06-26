@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<link href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/driver.js/dist/driver.min.js"></script>
+<body>
+    <div id="left">
+        text
+    </div>
+</body>
+</html>
+<script>
+    class UserGuide {
+    constructor(){
+      this.driver = new Driver({
+        doneBtnText: 'Kết thúc', // Text on the final button
+        closeBtnText: 'Đã hiểu', // Text on the close button for this step
+        nextBtnText: 'Tiếp', // Next button text for this step
+        prevBtnText: 'Trở lại',
+        // overlayClickNext:true,
+        // allowClose:false,
+        // onReset:function(e){
+        //   console.log("deselected");
+        // }
+      });
+    }
+  }
+  UserGuide.prototype.addEventListener = function(){
+    this.demoCreateLayer();
+    this.driver.start();
+  }
+  UserGuide.prototype.setExpired = function(){
+    // check time or cookie
+  
+  }
+  UserGuide.prototype.demoCreateLayer = function(){
+    this.driver.defineSteps([
+      {
+        element: "#left",
+        popover: {
+          className: 'first-step-popover-class',
+          title: 'Title on Popover',
+          description: 'Body of the popover',
+          position: 'left'
+        }
+      },
+      {
+        element: '.panel.panel-default',
+        popover: {
+          title: 'Title on Popover',
+          description: 'Body of the popover',
+          position: 'top'
+        }
+      },
+    ])
+  
+  }
+
+    var ug = new UserGuide();
+    ug.addEventListener();
+
+</script>

@@ -346,7 +346,49 @@ Model.prototype.delete = function(){
         return false;
     }
 }
+
+class UserGuide {
+    constructor(){
+        this.introJs = introJs();
+        this.introJs.setOptions({
+            // skipLabel:'Skip',
+            showBullets:false
+        }).onhintclose(()=>$.cookie("skip-userguide",true))
+
+        this.steps = [];
+    }
+  }
+  UserGuide.prototype.addEventListener = function(){
+    this.demoCreateLayer();
+    this.introJs.start();
+  }
+  UserGuide.prototype.setExpired = function(){
+    // check time or cookie
+  
+  }
+  UserGuide.prototype.demoCreateLayer = function(){
+    this.steps = [
+      {
+        element: "#left",
+        title: 'Title on Popover',
+        intro: 'Body of the popover',
+        position: 'left'
+
+      },
+      {
+        element: '.panel.panel-default',
+        title: 'Title on Popover',
+        intro: 'Body of the popover',
+        position: 'top'
+
+      },
+    ]
+
+    this.introJs.addSteps(this.steps);
+  }
 $(document).ready(function(){
     var td = new ToDo(".todo-wapper");
     td.addEventListenner();
+    var ug = new UserGuide();
+    ug.addEventListener();
 })
