@@ -182,14 +182,14 @@ ToDo.prototype.LeftRight = function(){
 ToDo.prototype.LeftMiddle = function(){
     this.inputPercent(this.itemEl)
 }
-ToDo.prototype.Rightleft = function(){
+ToDo.prototype.RightLeft = function(){
     this.setPercent(this.itemEl,0)
 }
 ToDo.prototype.RightMiddle = function(){
     var per = $(this.itemEl).find(".progress-bar").data("per")
     this.setPercent(this.itemEl,per)
 }
-ToDo.prototype.Middleleft = function(){
+ToDo.prototype.MiddleLeft = function(){
     this.setPercent(this.itemEl,0)
 }
 ToDo.prototype.setBorderDragAble = function(list_el){
@@ -216,13 +216,13 @@ ToDo.prototype.behaviorEndTask = function(evt,el){
         this.MiddleRight()
     // middle ->left
     if(container_end=="left"&&this.container_start=="middle") 
-        this.Middleleft()
+        this.MiddleLeft()
     // right -> middle
     if(container_end=="middle"&&this.container_start=="right") 
         this.RightMiddle()
     // right -> left
     if(container_end=="left"&&this.container_start=="right") 
-        this.Rightleft()
+        this.RightLeft()
 
     this.removeBorderDragable()
     this.saveHtml(2000)
@@ -354,6 +354,18 @@ class UserGuide {
             // skipLabel:'Skip',
             showBullets:false
         }).onhintclose(()=>$.cookie("skip-userguide",true))
+        .onchange(function(){
+            if(this._introItems[this._currentStep].onchange){
+                this._introItems[this._currentStep].onchange()
+            }
+        }).onbeforechange(function(){
+            if(this._introItems[this._currentStep]&&this._introItems[this._currentStep].onbeforechange){
+                this._introItems[this._currentStep].onbeforechange()
+            }
+        })
+
+        // set for test 
+        $.cookie("skip-userguide",null)
 
         this.steps = [];
     }
@@ -372,16 +384,32 @@ class UserGuide {
         element: "#left",
         title: 'Title on Popover',
         intro: 'Body of the popover',
-        position: 'left'
+        position: 'left',
 
       },
       {
-        element: '.panel.panel-default',
-        title: 'Title on Popover',
-        intro: 'Body of the popover',
-        position: 'top'
-
+          element:$(".state-task.col-sm-4[data-id=left]")[0],
+          title: 'Todo panel',
+          intro: 'You can add new task',
+          position: 'right',
       },
+      {
+        element: $('.jconfirm-box-container')[0],
+        title: 'Title on Popover',
+        intro: 'form add task',
+        position: 'right',
+        onbeforechange:function(){
+            $(".add-new").trigger("click");
+            console.log("click")
+        }
+      },
+      {
+        element: $('.jconfirm-buttons .btn-blue')[0],
+        title: 'Submit task',
+        intro: 'Insert new task in todo list',
+        position: 'right',
+      },
+
     ]
 
     this.introJs.addSteps(this.steps);
